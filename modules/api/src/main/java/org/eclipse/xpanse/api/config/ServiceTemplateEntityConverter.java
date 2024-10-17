@@ -60,6 +60,8 @@ public class ServiceTemplateEntityConverter {
             serviceTemplateDetailVo.setServiceProviderContactDetails(
                     serviceTemplateEntity.getOcl().getServiceProviderContactDetails());
             serviceTemplateDetailVo.setEula(serviceTemplateEntity.getOcl().getEula());
+            serviceTemplateDetailVo.setServiceConfigurationManage(serviceTemplateEntity
+                    .getOcl().getServiceConfigurationManage());
             return serviceTemplateDetailVo;
         }
         return null;
@@ -100,6 +102,8 @@ public class ServiceTemplateEntityConverter {
             userOrderableServiceVo.setServiceAvailabilityConfig(
                     serviceTemplateEntity.getOcl().getDeployment().getServiceAvailabilityConfig());
             userOrderableServiceVo.setEula(serviceTemplateEntity.getOcl().getEula());
+            userOrderableServiceVo.setConfigurationParameters(serviceTemplateEntity.getOcl()
+                    .getServiceConfigurationManage().getConfigurationParameters());
             return userOrderableServiceVo;
         }
         return null;

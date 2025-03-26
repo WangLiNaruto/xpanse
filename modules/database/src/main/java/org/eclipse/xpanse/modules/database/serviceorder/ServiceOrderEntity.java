@@ -57,10 +57,6 @@ public class ServiceOrderEntity implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private ServiceDeploymentEntity serviceDeploymentEntity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "OBJECT_ID")
-    private ServiceObjectEntity serviceObjectEntity;
-
     @Column(name = "PARENT_ORDER_ID")
     private UUID parentOrderId;
 

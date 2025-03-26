@@ -16,6 +16,7 @@ import org.eclipse.xpanse.modules.models.serviceconfiguration.exceptions.Service
 import org.eclipse.xpanse.modules.models.serviceconfiguration.exceptions.ServiceConfigChangeOrderAlreadyExistsException;
 import org.eclipse.xpanse.modules.models.serviceconfiguration.exceptions.ServiceConfigurationInvalidException;
 import org.eclipse.xpanse.modules.models.serviceconfiguration.exceptions.ServiceConfigurationNotFoundException;
+import org.eclipse.xpanse.modules.models.serviceconfiguration.exceptions.ServiceObjectChangeOrderAlreadyExistsException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -80,6 +81,17 @@ public class ServiceConfigurationExceptionHandler {
             ServiceActionChangeOrderAlreadyExistsException ex) {
         return getErrorResponse(
                 ErrorType.SERVICE_ACTION_CHANGE_ORDER_ALREADY_EXISTS,
+                Collections.singletonList(ex.getMessage()));
+    }
+
+    /** Exception handler for ServiceObjectsChangeOrderAlreadyExistsException. */
+    @ExceptionHandler({ServiceObjectChangeOrderAlreadyExistsException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorResponse handleServiceObjectsChangeOrderAlreadyExistsException(
+            ServiceObjectChangeOrderAlreadyExistsException ex) {
+        return getErrorResponse(
+                ErrorType.SERVICE_OBJECT_CHANGE_ORDER_ALREADY_EXISTS,
                 Collections.singletonList(ex.getMessage()));
     }
 }
